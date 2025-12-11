@@ -3,7 +3,11 @@ import { Schema, model } from "mongoose";
 
 const User = new Schema({
     fullName: String,
-    chatId: Number, 
+    chatId: {
+        type: Number,
+        required: true,
+        unique: true
+    }, 
     admin:{
         type: Boolean,
         default: false

@@ -5,14 +5,15 @@ import { bot } from './bot.js'
 async function Authorization () {
     try {
         bot.on("message", async (msg) => {
-           await bot.sendMessage(msg.chat.id, "Hello ")
-
            if(msg.text ==='/start') {
             console.log(msg)
-            CheckUser(msg)
+            if(await CheckUser(msg)) { 
+                return bot.sendMessage(msg.chat.id, "Marhamat do'stim , Sizga do'stup ochiq")
+            }else {
+                return bot.sendMessage(msg.chat.id, "Siz bazaga qo'shilmagansiz")
+            }
+            
            }
-         
-
 
         })
     } catch (error) {
