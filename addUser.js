@@ -16,8 +16,10 @@ async function AddUser(msgParam) {
         if(await CheckUser(msgParam)) {
             await bot.sendMessage(chatId, "You already exist in database")
         }else {
+            await bot.sendMessage(chatId, "Please wait.....")
             const addedUser = await addingUser.save()
             console.log(addedUser)
+
             await bot.sendMessage(chatId, "You successfully added to database")
             await bot.sendMessage(chatId, `Your data entity is:\n ${addedUser}` )
            

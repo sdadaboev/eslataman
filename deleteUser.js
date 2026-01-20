@@ -6,6 +6,7 @@ async function DeleteUser(msgParam) {
     const chatId = msgParam.chat.id
     try {
         if(await CheckUser(msgParam)) {
+            await bot.sendMessage(chatId, "Deleting ...")
             await User.deleteOne({chatId})
             await bot.sendMessage(chatId, "I deleted you from Database")
             

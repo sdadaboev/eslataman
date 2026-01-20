@@ -15,6 +15,14 @@ async function Authorization () {
             
            }
 
+        //    console.log(msg)
+           
+         bot.on('audio', async (msg)=> {
+                console.log(msg)
+                const fileId = msg.audio.file_id
+                await bot.sendAudio(msg.chat.id, fileId)
+           })  
+
         })
     } catch (error) {
         console.log(error)

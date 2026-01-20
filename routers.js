@@ -3,24 +3,32 @@ import DeleteUser from "./deleteUser.js";
 import AddUser from "./addUser.js";
 async function RouterCommands() {
     try {
-        bot.on("message", (msg)=> {
+        bot.on("message", async (msg)=> {
             const text = msg.text
 
             switch (text) {
                 case "/delete_me":
-                    DeleteUser(msg)
+                    await DeleteUser(msg)
                     break;
                 
                 case "/add_me":
-                    AddUser(msg)
+                    await AddUser(msg)
                     break;
+
+                
                 
                 default:
-                    bot.sendMessage(msg.chat.id, "Don't understand")
-                    break;
+                    if(msg.text == "/start") {
+                        return 
+                    }else {
+                        await bot.sendMessage(msg.chat.id, "Don't understand")
+                        break;
+                    }
             }
 
         })
+
+         
     } catch (error) {
         console.log("Router.js Router Commands error ________", error)
     }

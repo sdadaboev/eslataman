@@ -18,9 +18,6 @@ async function StartServer() {
         await MongoConnect()
         server.listen(PORT, ()=> {
         console.log(`Server started on port ${PORT}`)
-        
-        
-
 })
     } catch (error) {
         console.log("Server start error _______-", error)
